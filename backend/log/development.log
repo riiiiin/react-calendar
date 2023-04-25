@@ -1,0 +1,765 @@
+  [1m[35m (16.3ms)[0m  [1m[35mCREATE DATABASE `myapp_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (13.9ms)[0m  [1m[35mCREATE DATABASE `myapp_test` DEFAULT CHARACTER SET `utf8mb4`[0m
+Started GET "/" for 172.20.0.1 at 2023-04-17 21:50:46 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.1.7.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.1.7.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 104.1ms | Allocations: 535)
+Completed 200 OK in 374ms (Views: 216.1ms | ActiveRecord: 0.0ms | Allocations: 4492)
+
+
+Started GET "/api/v1/test" for 172.20.0.1 at 2023-04-17 21:51:49 +0900
+Processing by Api::V1::TestController#index as */*
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms | Allocations: 316)
+
+
+  [1m[35m (56.1ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  [1m[35m (53.6ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT GET_LOCK('7864839756650184315', 0)[0m
+  [1m[35m (12.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to DeviseTokenAuthCreateUsers (20230417125918)
+  [1m[35m (49.5ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `provider` varchar(255) DEFAULT 'email' NOT NULL, `uid` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `allow_password_change` tinyint(1) DEFAULT FALSE, `remember_created_at` datetime, `confirmation_token` varchar(255), `confirmed_at` datetime, `confirmation_sent_at` datetime, `unconfirmed_email` varchar(255), `name` varchar(255), `nickname` varchar(255), `image` varchar(255), `email` varchar(255), `tokens` text, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (68.6ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [1m[35m (43.8ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_uid_and_provider` ON `users` (`uid`, `provider`)[0m
+  [1m[35m (52.7ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_reset_password_token` ON `users` (`reset_password_token`)[0m
+  [1m[35m (72.2ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_confirmation_token` ON `users` (`confirmation_token`)[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20230417125918')[0m
+  [1m[36mTRANSACTION (13.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (4.4ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2023-04-17 12:59:43.538468', '2023-04-17 12:59:43.538468')[0m
+  [1m[36mTRANSACTION (14.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT RELEASE_LOCK('7864839756650184315')[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:03:57 +0900
+  
+NoMethodError (undefined method `mount_devise_token_auth_for' for #<ActionDispatch::Routing::Mapper:0x000056124c0e4fe8 @set=#<ActionDispatch::Routing::RouteSet:0x000056124ba23a60>, @draw_paths=[#<Pathname:/myapp/config/routes>], @scope=#<ActionDispatch::Routing::Mapper::Scope:0x000056124c0e4f98 @hash={:path_names=>{:new=>"new", :edit=>"edit"}}, @parent=#<ActionDispatch::Routing::Mapper::Scope:0x000056124bccff20 @hash=nil, @parent=nil, @scope_level=nil>, @scope_level=nil>, @concerns={}>):
+  
+config/routes.rb:6:in `block (3 levels) in <main>'
+config/routes.rb:3:in `block (2 levels) in <main>'
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:08:13 +0900
+  
+LoadError (cannot load such file -- devise_token_auth):
+  
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:10:06 +0900
+  
+NoMethodError (undefined method `mount_devise_token_auth_for' for #<ActionDispatch::Routing::Mapper:0x00007f0a2c04e470 @set=#<ActionDispatch::Routing::RouteSet:0x000056124ba23a60>, @draw_paths=[#<Pathname:/myapp/config/routes>], @scope=#<ActionDispatch::Routing::Mapper::Scope:0x00007f0a2c04e420 @hash={:path_names=>{:new=>"new", :edit=>"edit"}}, @parent=#<ActionDispatch::Routing::Mapper::Scope:0x000056124bccff20 @hash=nil, @parent=nil, @scope_level=nil>, @scope_level=nil>, @concerns={}>):
+  
+config/routes.rb:6:in `block (3 levels) in <main>'
+config/routes.rb:3:in `block (2 levels) in <main>'
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:14:54 +0900
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/auth"):
+  
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:17:35 +0900
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/auth"):
+  
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:17:51 +0900
+  
+NoMethodError (undefined method `mount_devise_token_auth_for' for #<ActionDispatch::Routing::Mapper:0x000056124b7590c8 @set=#<ActionDispatch::Routing::RouteSet:0x000056124ba23a60>, @draw_paths=[#<Pathname:/myapp/config/routes>], @scope=#<ActionDispatch::Routing::Mapper::Scope:0x000056124b758fd8 @hash={:path_names=>{:new=>"new", :edit=>"edit"}}, @parent=#<ActionDispatch::Routing::Mapper::Scope:0x000056124bccff20 @hash=nil, @parent=nil, @scope_level=nil>, @scope_level=nil>, @concerns={}>):
+  
+config/routes.rb:6:in `block (3 levels) in <main>'
+config/routes.rb:3:in `block (2 levels) in <main>'
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:20:22 +0900
+  
+NoMethodError (undefined method `mount_devise_token_auth_for' for #<ActionDispatch::Routing::Mapper:0x00007f0a340ba7a8 @set=#<ActionDispatch::Routing::RouteSet:0x000056124ba23a60>, @draw_paths=[#<Pathname:/myapp/config/routes>], @scope=#<ActionDispatch::Routing::Mapper::Scope:0x00007f0a340ba708 @hash={:path_names=>{:new=>"new", :edit=>"edit"}}, @parent=#<ActionDispatch::Routing::Mapper::Scope:0x000056124bccff20 @hash=nil, @parent=nil, @scope_level=nil>, @scope_level=nil>, @concerns={}>):
+  
+config/routes.rb:6:in `block (3 levels) in <main>'
+config/routes.rb:3:in `block (2 levels) in <main>'
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:22:42 +0900
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/auth"):
+  
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:25:10 +0900
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+ArgumentError (Before process_action callback :verify_authenticity_token has not been defined):
+  
+app/controllers/application_controller.rb:4:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/auth/registrations_controller.rb:1:in `<main>'
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:27:47 +0900
+  
+ArgumentError (Before process_action callback :verify_authenticity_token has not been defined):
+  
+app/controllers/application_controller.rb:4:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/auth/registrations_controller.rb:1:in `<main>'
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:30:12 +0900
+  
+NoMethodError (undefined method `helper_method' for ApplicationController:Class):
+  
+app/controllers/application_controller.rb:5:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/auth/registrations_controller.rb:1:in `<main>'
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:31:02 +0900
+  
+ArgumentError (Before process_action callback :verify_authenticity_token has not been defined):
+  
+app/controllers/application_controller.rb:4:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/auth/registrations_controller.rb:1:in `<main>'
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:32:03 +0900
+  
+AbstractController::ActionNotFound (The action 'create' could not be found for Api::V1::Auth::RegistrationsController
+Did you mean?  render_authenticate_error
+               resource_class
+               provider
+               get_case_insensitive_field_from_resource_params):
+  
+actionpack (6.1.7.3) lib/abstract_controller/base.rb:160:in `process'
+actionview (6.1.7.3) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.1.7.3) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.7.3) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.7.3) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.7.3) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.7.3) lib/action_dispatch/routing/mapper.rb:19:in `block in <class:Constraints>'
+actionpack (6.1.7.3) lib/action_dispatch/routing/mapper.rb:49:in `serve'
+actionpack (6.1.7.3) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.7.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.7.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.7.3) lib/action_dispatch/routing/route_set.rb:842:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.6.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.6.4) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.6.4) lib/rack/head.rb:12:in `call'
+activerecord (6.1.7.3) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.7.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.7.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.7.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.6.4) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.7.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.6.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-cors (2.0.1) lib/rack/cors.rb:102:in `call'
+railties (6.1.7.3) lib/rails/engine.rb:539:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:35:58 +0900
+Processing by Api::V1::Auth::RegistrationsController#create as */*
+  Parameters: {"name"=>"test", "email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'test@example.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  [1m[36mUser Create (2.8ms)[0m  [1m[32mINSERT INTO `users` (`uid`, `encrypted_password`, `name`, `email`, `created_at`, `updated_at`) VALUES ('test@example.com', '$2a$12$vGEzeZX.QjpDt2cWYk11kOIfdeGRAY7J8auwnKq2QR17u8GrdGycm', 'test', 'test@example.com', '2023-04-17 13:36:00.187607', '2023-04-17 13:36:00.187607')[0m
+  [1m[36mTRANSACTION (16.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (5.5ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"Sk1m6C7Gl0hu48aN_4TAhg\":{\"token\":\"$2a$10$GETcCWBaKHZkUJkM3d69ZOJUK5zrfIv8qRbEEzGzdEXffgiu9hamq\",\"expiry\":1682948160}}', `users`.`updated_at` = '2023-04-17 13:36:00.307645' WHERE `users`.`id` = 1[0m
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 1986ms (Views: 0.5ms | ActiveRecord: 57.3ms | Allocations: 33992)
+
+
+  
+NoMethodError (undefined method `downcase' for nil:NilClass):
+  
+rack (2.2.6.4) lib/rack/utils.rb:476:in `[]='
+rack (2.2.6.4) lib/rack/utils.rb:444:in `block in initialize'
+rack (2.2.6.4) lib/rack/utils.rb:444:in `each'
+rack (2.2.6.4) lib/rack/utils.rb:444:in `initialize'
+rack (2.2.6.4) lib/rack/utils.rb:437:in `new'
+rack (2.2.6.4) lib/rack/utils.rb:437:in `[]'
+rack (2.2.6.4) lib/rack/etag.rb:29:in `call'
+rack (2.2.6.4) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.6.4) lib/rack/head.rb:12:in `call'
+activerecord (6.1.7.3) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.7.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.7.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.7.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.6.4) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.7.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.6.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-cors (2.0.1) lib/rack/cors.rb:102:in `call'
+railties (6.1.7.3) lib/rails/engine.rb:539:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:38:25 +0900
+  
+AbstractController::ActionNotFound (The action 'create' could not be found for Api::V1::Auth::RegistrationsController
+Did you mean?  render_authenticate_error
+               resource_class
+               provider
+               get_case_insensitive_field_from_resource_params):
+  
+actionpack (6.1.7.3) lib/abstract_controller/base.rb:160:in `process'
+actionview (6.1.7.3) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.1.7.3) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.7.3) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.7.3) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.7.3) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.7.3) lib/action_dispatch/routing/mapper.rb:19:in `block in <class:Constraints>'
+actionpack (6.1.7.3) lib/action_dispatch/routing/mapper.rb:49:in `serve'
+actionpack (6.1.7.3) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.7.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.7.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.7.3) lib/action_dispatch/routing/route_set.rb:842:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.6.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.6.4) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.6.4) lib/rack/head.rb:12:in `call'
+activerecord (6.1.7.3) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.7.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.7.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.7.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.6.4) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.7.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.6.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-cors (2.0.1) lib/rack/cors.rb:102:in `call'
+railties (6.1.7.3) lib/rails/engine.rb:539:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:40:51 +0900
+Processing by Api::V1::Auth::RegistrationsController#create as */*
+  Parameters: {"name"=>"test", "email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'test@example.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 319ms (Views: 0.4ms | ActiveRecord: 11.1ms | Allocations: 14022)
+
+
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:41:02 +0900
+Processing by Api::V1::Auth::RegistrationsController#create as */*
+  Parameters: {"name"=>"test", "email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'test@example.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 296ms (Views: 0.4ms | ActiveRecord: 2.3ms | Allocations: 4472)
+
+
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:42:03 +0900
+Processing by Api::V1::Auth::RegistrationsController#create as */*
+  Parameters: {"name"=>"test", "email"=>"test2@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'test2@example.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  [1m[36mUser Create (2.3ms)[0m  [1m[32mINSERT INTO `users` (`uid`, `encrypted_password`, `name`, `email`, `created_at`, `updated_at`) VALUES ('test2@example.com', '$2a$12$CdvEt9rTXcXW7Q/QjNqooe.iXunFJ5/vA5aKGNM4Kl/ezY6sSZNJK', 'test', 'test2@example.com', '2023-04-17 13:42:03.426471', '2023-04-17 13:42:03.426471')[0m
+  [1m[36mTRANSACTION (10.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"mBNCTxm2bu_elCRQ21S-VQ\":{\"token\":\"$2a$10$9ZzA99TrcxhUr6I7U/Tnde58PbgjEewp7qIiFIYMP/aUGb5AEhuxm\",\"expiry\":1682948523}}', `users`.`updated_at` = '2023-04-17 13:42:03.527357' WHERE `users`.`id` = 2[0m
+  [1m[36mTRANSACTION (7.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+Completed 200 OK in 435ms (Views: 0.4ms | ActiveRecord: 24.1ms | Allocations: 9322)
+
+
+  
+NoMethodError (undefined method `downcase' for nil:NilClass):
+  
+rack (2.2.6.4) lib/rack/utils.rb:476:in `[]='
+rack (2.2.6.4) lib/rack/utils.rb:444:in `block in initialize'
+rack (2.2.6.4) lib/rack/utils.rb:444:in `each'
+rack (2.2.6.4) lib/rack/utils.rb:444:in `initialize'
+rack (2.2.6.4) lib/rack/utils.rb:437:in `new'
+rack (2.2.6.4) lib/rack/utils.rb:437:in `[]'
+rack (2.2.6.4) lib/rack/etag.rb:29:in `call'
+rack (2.2.6.4) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.6.4) lib/rack/head.rb:12:in `call'
+activerecord (6.1.7.3) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.7.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.7.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.7.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.6.4) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.7.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.6.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-cors (2.0.1) lib/rack/cors.rb:102:in `call'
+railties (6.1.7.3) lib/rails/engine.rb:539:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:42:08 +0900
+Processing by Api::V1::Auth::RegistrationsController#create as */*
+  Parameters: {"name"=>"test", "email"=>"test2@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'test2@example.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 294ms (Views: 0.3ms | ActiveRecord: 2.6ms | Allocations: 4467)
+
+
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:46:05 +0900
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::Auth::RegistrationsController#create as */*
+  Parameters: {"name"=>"test", "email"=>"test2@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'test2@example.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 1276ms (Views: 0.6ms | ActiveRecord: 7.9ms | Allocations: 28696)
+
+
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 22:46:21 +0900
+Processing by Api::V1::Auth::RegistrationsController#create as */*
+  Parameters: {"name"=>"test", "email"=>"test3@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'test3@example.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  [1m[36mUser Create (2.0ms)[0m  [1m[32mINSERT INTO `users` (`uid`, `encrypted_password`, `name`, `email`, `created_at`, `updated_at`) VALUES ('test3@example.com', '$2a$12$YDSofC/qozg2jxil2jIHLu21PHfDJ7dNqrGBe7SAZpt3fItbhZzim', 'test', 'test3@example.com', '2023-04-17 13:46:21.719275', '2023-04-17 13:46:21.719275')[0m
+  [1m[36mTRANSACTION (10.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (2.4ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"BjpIK3rn4RJC6YrZoF82Ig\":{\"token\":\"$2a$10$EPz2/7VpHhEVqtHLdpSc0uzYFGMhJXHJNS8qX7/1AzNfwEbINx0eW\",\"expiry\":1682948781}}', `users`.`updated_at` = '2023-04-17 13:46:21.814784' WHERE `users`.`id` = 3[0m
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+Completed 200 OK in 421ms (Views: 0.6ms | ActiveRecord: 25.6ms | Allocations: 10029)
+
+
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 23:22:32 +0900
+Processing by Api::V1::Auth::RegistrationsController#create as HTML
+  Parameters: {"name"=>"matsuda", "email"=>"test11@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "registration"=>{"name"=>"matsuda", "email"=>"test11@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :registration[0m
+[31mUnpermitted parameter: :registration[0m
+[31mUnpermitted parameter: :registration[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (4.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'test11@mail.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  [1m[36mUser Create (8.2ms)[0m  [1m[32mINSERT INTO `users` (`uid`, `encrypted_password`, `name`, `email`, `created_at`, `updated_at`) VALUES ('test11@mail.com', '$2a$12$TbHruhV3Z3Fg7wtB1MH2Lua3vo5.HlA9yHiZ0WUmwnc3x29FJKhMq', 'matsuda', 'test11@mail.com', '2023-04-17 14:22:33.525938', '2023-04-17 14:22:33.525938')[0m
+  [1m[36mTRANSACTION (22.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (26.1ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"u8DUUUMWyMj8KM7o7FrUww\":{\"token\":\"$2a$10$yrHwCV0dtQEnHC5YNIm22OeC.0Qh2m1iKS9pn5ABgxvXt9iSBgBaW\",\"expiry\":1682950953}}', `users`.`updated_at` = '2023-04-17 14:22:33.675265' WHERE `users`.`id` = 4[0m
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-17 23:22:33 +0900
+Processing by Api::V1::Auth::RegistrationsController#create as HTML
+  Parameters: {"name"=>"matsuda", "email"=>"test11@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "registration"=>{"name"=>"matsuda", "email"=>"test11@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (18.9ms)[0m  [1m[35mCOMMIT[0m
+[31mUnpermitted parameter: :registration[0m
+[31mUnpermitted parameter: :registration[0m
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 874ms (Views: 4.5ms | ActiveRecord: 102.0ms | Allocations: 10319)
+
+
+[31mUnpermitted parameter: :registration[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'test11@mail.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 515ms (Views: 0.3ms | ActiveRecord: 3.3ms | Allocations: 6999)
+
+
+Started GET "/api/v1/auth/sessions" for 172.20.0.1 at 2023-04-17 23:23:05 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 96ms (Views: 1.3ms | ActiveRecord: 2.6ms | Allocations: 2548)
+
+
+Started GET "/api/v1/auth/sessions" for 172.20.0.1 at 2023-04-18 09:14:29 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (33.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 379ms (Views: 18.2ms | ActiveRecord: 64.7ms | Allocations: 2066)
+
+
+Started GET "/api/v1/auth/sessions" for 172.20.0.1 at 2023-04-18 09:16:04 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (4.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 74ms (Views: 4.3ms | ActiveRecord: 5.9ms | Allocations: 1928)
+
+
+Started DELETE "/api/v1/auth/sign_out" for 172.20.0.1 at 2023-04-18 09:16:35 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (10.9ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = NULL, `users`.`updated_at` = '2023-04-18 00:16:35.791753' WHERE `users`.`id` = 4[0m
+  [1m[36mTRANSACTION (19.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 153ms (Views: 0.7ms | ActiveRecord: 31.7ms | Allocations: 5092)
+
+
+Started POST "/api/v1/auth/sign_in" for 172.20.0.1 at 2023-04-18 09:16:46 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test11@mail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test11@mail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (24.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE (BINARY email = 'test11@mail.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+Completed 401 Unauthorized in 421ms (Views: 13.0ms | ActiveRecord: 24.9ms | Allocations: 2307)
+
+
+Started POST "/api/v1/auth/sign_in" for 172.20.0.1 at 2023-04-18 09:19:32 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test11@mail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test11@mail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE (BINARY email = 'test11@mail.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+Completed 401 Unauthorized in 335ms (Views: 0.3ms | ActiveRecord: 1.5ms | Allocations: 1541)
+
+
+Started POST "/api/v1/auth" for 172.20.0.1 at 2023-04-18 09:20:16 +0900
+Processing by Api::V1::Auth::RegistrationsController#create as HTML
+  Parameters: {"name"=>"matsuda2", "email"=>"matsuda2@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "registration"=>{"name"=>"matsuda2", "email"=>"matsuda2@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :registration[0m
+[31mUnpermitted parameter: :registration[0m
+[31mUnpermitted parameter: :registration[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'matsuda2@mail.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  [1m[36mUser Create (6.8ms)[0m  [1m[32mINSERT INTO `users` (`uid`, `encrypted_password`, `name`, `email`, `created_at`, `updated_at`) VALUES ('matsuda2@mail.com', '$2a$12$10Sa6atrCe4JQPychFZi3e2BQhf0Y.GSuqe8bNXFHFz6kr/kiENSy', 'matsuda2', 'matsuda2@mail.com', '2023-04-18 00:20:17.255094', '2023-04-18 00:20:17.255094')[0m
+  [1m[36mTRANSACTION (12.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"0JbELoFlV3Gy4WUjS3lbRg\":{\"token\":\"$2a$10$m7fCmLzS6h1hnaeLw/hxUepmv2kNk0YGhI3P1Fmr8apbGVVnk/P9y\",\"expiry\":1682986817}}', `users`.`updated_at` = '2023-04-18 00:20:17.376431' WHERE `users`.`id` = 5[0m
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 5 LIMIT 1[0m
+Completed 200 OK in 524ms (Views: 0.8ms | ActiveRecord: 34.2ms | Allocations: 9257)
+
+
+Started DELETE "/api/v1/auth/sign_out" for 172.20.0.1 at 2023-04-18 09:20:21 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'matsuda2@mail.com' LIMIT 1[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (3.1ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = NULL, `users`.`updated_at` = '2023-04-18 00:20:21.189081' WHERE `users`.`id` = 5[0m
+  [1m[36mTRANSACTION (25.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 154ms (Views: 0.5ms | ActiveRecord: 30.8ms | Allocations: 4111)
+
+
+Started POST "/api/v1/auth/sign_in" for 172.20.0.1 at 2023-04-18 09:20:32 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"matsuda2@mail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"matsuda2@mail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE (BINARY email = 'matsuda2@mail.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.3ms)[0m  [1m[37mSELECT `users`.* FROM `users` WHERE `users`.`id` = 5 LIMIT 1 FOR UPDATE[0m
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"chv5SdHhEbGVNDKHyWOimA\":{\"token\":\"$2a$10$lMRg60pPLAwBgUqxxhBUw.mk.2ucoJfkrKiVrlm4ztBMlsN8cBrD2\",\"expiry\":1682986833}}', `users`.`updated_at` = '2023-04-18 00:20:33.108384' WHERE `users`.`id` = 5[0m
+  [1m[36mTRANSACTION (12.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 5 LIMIT 1[0m
+Completed 200 OK in 451ms (Views: 1.5ms | ActiveRecord: 17.3ms | Allocations: 7091)
+
+
+Started POST "/api/v1/auth/sign_in" for 172.18.0.1 at 2023-04-19 16:08:26 +0900
+  [1m[35m (31.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started POST "/api/v1/auth/sign_in" for 172.18.0.1 at 2023-04-19 16:08:27 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test11@mail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test11@mail.com", "password"=>"[FILTERED]"}}
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test11@mail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test11@mail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (8.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE (BINARY email = 'test11@mail.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE (BINARY email = 'test11@mail.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[37mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1 FOR UPDATE[0m
+  [1m[36mUser Update (8.8ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"J7L52ZYpFm0UWYJW0xazsg\":{\"token\":\"$2a$10$xtrGfdeMbZp2pDNgdmX6J.K02OG8CmiO5oJP6Nk5Nh/5FLKs5DKyu\",\"expiry\":1683097708}}', `users`.`updated_at` = '2023-04-19 07:08:28.699418' WHERE `users`.`id` = 4[0m
+  [1m[36mTRANSACTION (12.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (111.4ms)[0m  [1m[37mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1 FOR UPDATE[0m
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 629ms (Views: 0.6ms | ActiveRecord: 44.2ms | Allocations: 22814)
+
+
+  [1m[36mUser Update (3.1ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"J7L52ZYpFm0UWYJW0xazsg\":{\"token\":\"$2a$10$xtrGfdeMbZp2pDNgdmX6J.K02OG8CmiO5oJP6Nk5Nh/5FLKs5DKyu\",\"expiry\":1683097708},\"OSn8SB8ngf5XWqlrEQEswQ\":{\"token\":\"$2a$10$223FxsITqAYjrCc2kUC4Je3cE.FFTcMYtBxSTWjZ4KWH2z86Pgt8C\",\"expiry\":1683097708}}', `users`.`updated_at` = '2023-04-19 07:08:28.872865' WHERE `users`.`id` = 4[0m
+  [1m[36mTRANSACTION (10.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 833ms (Views: 0.5ms | ActiveRecord: 149.0ms | Allocations: 28709)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-19 16:16:07 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (9.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 185ms (Views: 4.9ms | ActiveRecord: 26.5ms | Allocations: 2682)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-19 16:19:08 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 50ms (Views: 2.7ms | ActiveRecord: 4.8ms | Allocations: 1951)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-19 16:20:05 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 43ms (Views: 5.4ms | ActiveRecord: 6.0ms | Allocations: 1939)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-19 17:17:12 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (26.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 267ms (Views: 4.9ms | ActiveRecord: 79.1ms | Allocations: 2047)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-19 17:19:12 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (14.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 118ms (Views: 9.6ms | ActiveRecord: 15.8ms | Allocations: 1936)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-19 17:24:23 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (8.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 61ms (Views: 1.4ms | ActiveRecord: 10.5ms | Allocations: 1950)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-19 17:28:54 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (5.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (5.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 77ms (Views: 4.3ms | ActiveRecord: 11.0ms | Allocations: 1937)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-19 17:29:57 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 26ms (Views: 1.5ms | ActiveRecord: 2.4ms | Allocations: 1936)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-19 17:30:13 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (12.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 81ms (Views: 9.1ms | ActiveRecord: 14.8ms | Allocations: 1936)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-19 17:30:57 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 20ms (Views: 1.2ms | ActiveRecord: 3.6ms | Allocations: 1936)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-19 17:31:02 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 31ms (Views: 1.2ms | ActiveRecord: 3.1ms | Allocations: 1936)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-19 17:38:53 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (10.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (10.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 133ms (Views: 0.7ms | ActiveRecord: 25.3ms | Allocations: 2047)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-19 17:43:27 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 23ms (Views: 0.8ms | ActiveRecord: 2.6ms | Allocations: 1936)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-19 17:53:31 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 111ms (Views: 2.0ms | ActiveRecord: 14.8ms | Allocations: 2045)
+
+
+Started POST "/api/v1/auth/sign_in" for 172.18.0.1 at 2023-04-20 09:43:16 +0900
+  [1m[35m (110.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test11@mail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test11@mail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (9.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE (BINARY email = 'test11@mail.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (3.4ms)[0m  [1m[37mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1 FOR UPDATE[0m
+  [1m[36mUser Update (6.1ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"J7L52ZYpFm0UWYJW0xazsg\":{\"token\":\"$2a$10$xtrGfdeMbZp2pDNgdmX6J.K02OG8CmiO5oJP6Nk5Nh/5FLKs5DKyu\",\"expiry\":1683097708},\"OSn8SB8ngf5XWqlrEQEswQ\":{\"token\":\"$2a$10$223FxsITqAYjrCc2kUC4Je3cE.FFTcMYtBxSTWjZ4KWH2z86Pgt8C\",\"expiry\":1683097708},\"rU0Hw817pSvPMmEQWR9vZw\":{\"token\":\"$2a$10$.H9y8uHFR1Gz0R.k0WR8SOl.w7gXfAlRmEsa8vzWic3IkxkgQTIji\",\"expiry\":1683161000}}', `users`.`updated_at` = '2023-04-20 00:43:20.026532' WHERE `users`.`id` = 4[0m
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 1144ms (Views: 0.9ms | ActiveRecord: 44.0ms | Allocations: 20873)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-20 09:43:32 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 157ms (Views: 0.7ms | ActiveRecord: 5.0ms | Allocations: 2554)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-20 09:44:58 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (83.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 230ms (Views: 8.3ms | ActiveRecord: 84.9ms | Allocations: 1960)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-20 09:45:19 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (4.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 50ms (Views: 1.6ms | ActiveRecord: 5.7ms | Allocations: 1960)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-20 13:04:32 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (9.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 128ms (Views: 6.7ms | ActiveRecord: 20.2ms | Allocations: 2088)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-20 13:04:41 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 33ms (Views: 1.4ms | ActiveRecord: 2.5ms | Allocations: 1948)
+
+
+Started POST "/api/v1/auth/sign_in" for 172.18.0.1 at 2023-04-25 22:40:25 +0900
+  [1m[35m (12.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test11@mail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test11@mail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (7.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE (BINARY email = 'test11@mail.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[37mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1 FOR UPDATE[0m
+  [1m[36mUser Update (4.2ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"J7L52ZYpFm0UWYJW0xazsg\":{\"token\":\"$2a$10$xtrGfdeMbZp2pDNgdmX6J.K02OG8CmiO5oJP6Nk5Nh/5FLKs5DKyu\",\"expiry\":1683097708},\"OSn8SB8ngf5XWqlrEQEswQ\":{\"token\":\"$2a$10$223FxsITqAYjrCc2kUC4Je3cE.FFTcMYtBxSTWjZ4KWH2z86Pgt8C\",\"expiry\":1683097708},\"rU0Hw817pSvPMmEQWR9vZw\":{\"token\":\"$2a$10$.H9y8uHFR1Gz0R.k0WR8SOl.w7gXfAlRmEsa8vzWic3IkxkgQTIji\",\"expiry\":1683161000},\"CwXR-3JRGrQVMKHm3LRwYg\":{\"token\":\"$2a$10$YvnbvzM1CRzXs.RWQVEnS.0GRaJWDuFXml78kdt3LvHWtnAY42oJK\",\"expiry\":1683639626}}', `users`.`updated_at` = '2023-04-25 13:40:26.981014' WHERE `users`.`id` = 4[0m
+  [1m[36mTRANSACTION (8.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 570ms (Views: 0.9ms | ActiveRecord: 29.1ms | Allocations: 20941)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-25 22:42:08 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (10.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 154ms (Views: 4.4ms | ActiveRecord: 11.5ms | Allocations: 2563)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-25 22:44:30 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 445ms (Views: 2.6ms | ActiveRecord: 5.8ms | Allocations: 1974)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-25 22:44:56 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 24ms (Views: 1.5ms | ActiveRecord: 3.2ms | Allocations: 1970)
+
+
+Started GET "/api/v1/auth/sessions" for 172.18.0.1 at 2023-04-25 22:46:09 +0900
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'test11@mail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:3:in `index'
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 38ms (Views: 1.0ms | ActiveRecord: 4.6ms | Allocations: 1970)
+
+
