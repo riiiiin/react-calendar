@@ -1,0 +1,12 @@
+.fc-media-screen {
+    width: 1000px;
+}
+.fc-col-header {
+    width: 100% !important;
+}
+.fc-daygrid-body {
+    width: 100% !important;
+}
+.fc-scrollgrid-sync-table {
+    width: 100% !important;
+}
