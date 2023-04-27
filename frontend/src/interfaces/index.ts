@@ -25,3 +25,12 @@ export interface SignUpParams {
     created_at: Date
     updated_at: Date
   }
+  
+  // イベント
+  export interface Event {
+    body: string
+    date: string
+    name: string
+    title: string
+    user_id: number
+  }

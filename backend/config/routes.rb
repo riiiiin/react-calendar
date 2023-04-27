@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  post 'events/create'
+  post 'events/destroy'
+  post 'events/index'
   namespace :api do
     namespace :v1 do
       resources :test, only: %i[index]
