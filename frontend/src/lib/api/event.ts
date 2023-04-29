@@ -3,7 +3,7 @@ import Cookies from "js-cookie"
 import applyCaseMiddleware from "axios-case-converter"
 import axios from "axios"
 
-import { Event } from "interfaces/index"
+import { Event, Follow, updateFollow } from "interfaces/index"
 
 const options = {
     ignoreHeaders: true 
@@ -28,4 +28,16 @@ export const deleteEvent = (id: number) => {
   return client1.post("events/destroy", {
     id: id
   })
+}
+
+export const addFollow = (params: Follow) => {
+    return client1.post("events/createFollow", params)
+}
+
+export const updateApproval = (params: updateFollow) => {
+    return client1.post("events/updateFollow", params)
+}
+
+export const destroyApproval = (params: updateFollow) => {
+    return client1.post("events/destroyFollow", params)
 }

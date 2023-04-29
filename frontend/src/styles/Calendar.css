@@ -10,3 +10,18 @@
 .fc-scrollgrid-sync-table {
     width: 100% !important;
 }
+.fc-toolbar-title {
+    font-weight: normal;
+}
+.fc-today-button.fc-button.fc-button-primary {
+    background-color: inherit;
+    color: #1A4F83;
+    border-color: #1A4F83;
+}
+.fc-icon.fc-icon-chevron-left, .fc-icon.fc-icon-chevron-right {
+    color: #1A4F83;
+}
+.fc-prev-button.fc-button.fc-button-primary, .fc-next-button.fc-button.fc-button-primary {
+    background-color: inherit;
+    border: none;
+}

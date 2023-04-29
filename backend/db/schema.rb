@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_25_145252) do
+ActiveRecord::Schema.define(version: 2023_04_28_070257) do
 
   create_table "events", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 2023_04_25_145252) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "follows", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "users_id", null: false
+    t.integer "follow_id"
+    t.string "isApprove"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["users_id"], name: "index_follows_on_users_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -49,4 +58,5 @@ ActiveRecord::Schema.define(version: 2023_04_25_145252) do
   end
 
   add_foreign_key "events", "users"
+  add_foreign_key "follows", "users", column: "users_id"
 end
