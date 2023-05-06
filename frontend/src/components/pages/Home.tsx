@@ -139,7 +139,7 @@ const Home: React.FC = () => {
     }
   }
 
-  const handleEventClick = useCallback((arg: import("/Users/matsudarisa/dev/calendar2/frontend/node_modules/@fullcalendar/core/internal-common").a1) => {
+  const handleEventClick = useCallback((arg: import("../../../node_modules/@fullcalendar/core/internal-common").a1) => {
     const argData = {
       body: arg.event._def.extendedProps['body'],
       name: arg.event._def.extendedProps['name'],
