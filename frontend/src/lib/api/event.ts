@@ -10,8 +10,11 @@ const options = {
   }
   
 const client1 = applyCaseMiddleware(axios.create({
-baseURL: "http://localhost:3001/"
+baseURL: "https://my-project-46299-qyobf4p2pa-uc.a.run.app/"
 }), options)
+// const client1 = applyCaseMiddleware(axios.create({
+// baseURL: "http://localhost:3001/"
+// }), options)
 
 // イベント作成
 export const sendEvent = (params: Event) => {
