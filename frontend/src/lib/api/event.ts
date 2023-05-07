@@ -3,7 +3,7 @@ import Cookies from "js-cookie"
 import applyCaseMiddleware from "axios-case-converter"
 import axios from "axios"
 
-import { Event, Follow, updateFollow } from "interfaces/index"
+import { Event, Follow, updateFollow, editEvent } from "interfaces/index"
 
 const options = {
     ignoreHeaders: true 
@@ -19,6 +19,11 @@ baseURL: "https://my-project-46299-qyobf4p2pa-uc.a.run.app/"
 // イベント作成
 export const sendEvent = (params: Event) => {
   return client1.post("events/create", params)
+}
+
+// イベント編集
+export const editEvents = (params: editEvent) => {
+  return client1.post("events/edit", params)
 }
 
 export const getEvent = (id: number) => {

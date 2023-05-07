@@ -6,11 +6,12 @@ import "../../styles/Calendar.css";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import { useCallback, useState } from "react";
 import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
-import { Event, updateFollow } from "interfaces/index";
-import { sendEvent, getEvent, deleteEvent, updateApproval, destroyApproval } from "lib/api/event";
+import { Event, updateFollow, editEvent } from "interfaces/index";
+import { sendEvent, getEvent, deleteEvent, updateApproval, destroyApproval, editEvents } from "lib/api/event";
 import FullCalendar from "@fullcalendar/react";
 import EventClickArg from "@fullcalendar/react";
 import CloseIcon from '@material-ui/icons/Close';
+import EditIcon from '@material-ui/icons/Edit';
 
 type allEvents = {
   title: string;
@@ -36,6 +37,7 @@ const Home: React.FC = () => {
   const { isSignedIn, currentUser } = useContext(AuthContext)
   const [isModal, setIsModal] = useState<boolean>(false);
   const [date, setDate] = useState<string>('');
+  const [eventId, setEventId] = useState<string>('');
   const [event, setEvent] = useState<string>('');
   const [body, setBody] = useState<string>('');
   const [allEvent, setAllEvent] = useState<allEvents[]>([]);
@@ -45,6 +47,7 @@ const Home: React.FC = () => {
   const [followersInfo, setFollowersInfo] = useState([])
   const [followEvent, setFollowEvent] = useState([])
   const [isDetails, setIsDetails] = useState<boolean>(false)
+  const [isEdit, setIsEdit] = useState<boolean>(false)
   const [detailsEvent, setDetailsEvent] = useState<extendes>({
     body: "",
     name: "",
@@ -111,7 +114,7 @@ const Home: React.FC = () => {
 
   const handleDateClick = useCallback((arg: DateClickArg) => {
     setDate(arg.dateStr);
-    setIsModal(true)
+    setIsModal(true);
   }, []);
 
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -131,6 +134,32 @@ const Home: React.FC = () => {
     if (body != '' && event != '') {
       try {
         const res = await sendEvent(params)
+        console.log(res)
+        setIsAdd(isAdd + 1)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  }
+  const handleEditClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+
+    const params: editEvent = {
+      id: parseInt(detailsEvent['event_id']),
+      body: body,
+      date: date,
+      name: currentUser?.name != undefined ? currentUser?.name : "",
+      title: event,
+      user_id: currentUser?.id != undefined ? currentUser?.id : 0,
+    }
+    setEvent('');
+    setBody('');
+    setIsEdit(false);
+    setIsDetails(false);
+
+    if (body != '' && event != '') {
+      try {
+        const res = await editEvents(params)
         console.log(res)
         setIsAdd(isAdd + 1)
       } catch (err) {
@@ -221,19 +250,33 @@ const Home: React.FC = () => {
               <div style={{position: "fixed", top: "100px", left: "200px", borderRadius: "8px", width: "400px", height: "250px", zIndex: "5", display: isDetails ? "block" : "none", boxShadow: "0px 0px 10px rgba(150, 150, 150, .5)", backgroundColor: "white"}}>
                 <div style={{margin: "20px"}}>
                   <div style={{display: "flex", justifyContent: "end", alignItems: "center"}}>
-                    <CloseIcon onClick={(e)=>{setIsDetails(false)}} style={{cursor: "pointer"}} />
+                    <EditIcon onClick={(e)=>{setIsEdit(true); setEvent(detailsEvent?detailsEvent['title']:""); setBody(detailsEvent?String(detailsEvent['body']):"")}} style={{display: detailsEvent["bool"] == true ? "block" : "none", cursor: "pointer", marginRight: "20px"}} />
+                    <CloseIcon onClick={(e)=>{setIsDetails(false); setIsEdit(false)}} style={{cursor: "pointer"}} />
                   </div>
-                  <div style={{marginTop: "15px"}}>
-                    イベント名：{detailsEvent?detailsEvent['title']:""}
+                  <div className="" style={{display: isEdit == false ? "block" : "none"}}>
+                    <div style={{marginTop: "15px"}}>
+                      イベント名：{detailsEvent?detailsEvent['title']:""}
+                    </div>
+                    <div style={{marginTop: "15px"}}>
+                      内容：{detailsEvent?detailsEvent['body']:""}
+                    </div>
+                    <div style={{marginTop: "15px"}}>
+                      作成者：{detailsEvent?detailsEvent['name']:""}
+                    </div>
+                    <div style={{display: "flex", justifyContent: "end", marginTop: "30px"}}>
+                      <button onClick={handleDeleteEvent} style={{display: detailsEvent["bool"] == true ? "block" : "none", backgroundColor: "#1A4F83", color: "white", border:"none", padding: "5px 20px", borderRadius: "5px", fontWeight: "bold", cursor: "pointer", marginRight: "10px"}}>削除</button>
+                    </div>
                   </div>
-                  <div style={{marginTop: "15px"}}>
-                    内容：{detailsEvent?detailsEvent['body']:""}
-                  </div>
-                  <div style={{marginTop: "15px"}}>
-                    作成者：{detailsEvent?detailsEvent['name']:""}
-                  </div>
-                  <div style={{display: "flex", justifyContent: "end", marginTop: "30px"}}>
-                    <button onClick={handleDeleteEvent} style={{display: detailsEvent["bool"] == true ? "block" : "none", backgroundColor: "#1A4F83", color: "white", border:"none", padding: "5px 20px", borderRadius: "5px", fontWeight: "bold", cursor: "pointer", marginRight: "10px"}}>削除</button>
+                  <div className="" style={{display: isEdit == true ? "block" : "none"}}>
+                    <div style={{marginTop: "30px"}}>
+                      <input onChange={(e)=>{setEvent(e.target.value)}} value={event} type="text" placeholder="イベントを編集" style={{border: "none", borderBottom: "1px solid rgba(26, 79, 131, .5)", fontSize: "20px"}} />
+                    </div>
+                    <div style={{marginTop: "15px"}}>
+                      <input onChange={(e)=>{setBody(e.target.value)}} value={body} type="text" placeholder="本文を編集" style={{border: "none", borderBottom: "1px solid rgba(26, 79, 131, .5)", fontSize: "20px"}} />
+                    </div>
+                    <div style={{display: "flex", justifyContent: "end", marginTop: "30px"}}>
+                      <button style={{backgroundColor: "#1A4F83", color: "white", border:"none", padding: "5px 20px", borderRadius: "5px", fontWeight: "bold"}} onClick={handleEditClick}>完了</button>
+                    </div>
                   </div>
                 </div>
               </div>

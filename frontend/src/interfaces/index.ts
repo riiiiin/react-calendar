@@ -35,6 +35,16 @@ export interface Event {
   user_id: number
 }
 
+// イベント編集
+export interface editEvent {
+  id: number
+  body: string
+  date: string
+  name: string
+  title: string
+  user_id: number
+}
+
 // フォロワー追加
 export interface Follow {
   user_id: number
