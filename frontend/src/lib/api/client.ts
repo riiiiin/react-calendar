@@ -11,7 +11,7 @@ const options = {
 }
 
 const client = applyCaseMiddleware(axios.create({
-  baseURL: "https://my-project-46299-qyobf4p2pa-uc.a.run.app/api/v1"
+  baseURL: "https://my-project-46299-lhpbxdjs6q-an.a.run.app/api/v1"
 }), options)
 // const client = applyCaseMiddleware(axios.create({
 //   baseURL: "http://localhost:3001/api/v1"
